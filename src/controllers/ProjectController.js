@@ -1,7 +1,7 @@
 import { EVENTS } from "../constants/events.js";
 
 export class ProjectController {
-  constructor(eventBus, store, component, container) {
+  constructor(eventBus, store, component, container, dialog) {
     if (typeof eventBus?.subscribe !== "function") {
       throw new Error("An eventBus with 'subscribe' method is required.");
     }
@@ -10,19 +10,26 @@ export class ProjectController {
     this.store = store;
     this.component = component;
     this.container = container;
+    this.dialog = dialog;
 
     this.init();
   }
 
   init() {
     this.container.appendChild(this.component.element);
+    document.body.appendChild(this.dialog.element);
 
     this.eventBus.subscribe(EVENTS.STATE.PROJECTS_UPDATED, (projects) => {
       this.component.render(projects);
     });
 
-    this.eventBus.subscribe(EVENTS.UI.ADD_PROJECT_CLICKED, (projectName) => {
+    this.eventBus.subscribe(EVENTS.UI.ADD_PROJECT_CLICKED, () => {
+      this.dialog.open();
+    });
+
+    this.eventBus.subscribe(EVENTS.UI.PROJECT_FORM_SUBMITTED, (projectName) => {
       this.store.addProject(projectName);
+      this.dialog.close();
     });
   }
 }

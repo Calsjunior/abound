@@ -33,11 +33,7 @@ export class ProjectList {
       "button",
       {
         classes: ["project__button"],
-        onClick: () => {
-          const name = prompt("Project name");
-          if (!name?.trim()) return;
-          this.eventBus.publish(EVENTS.UI.ADD_PROJECT_CLICKED, name.trim());
-        },
+        onClick: () => this.eventBus.publish(EVENTS.UI.ADD_PROJECT_CLICKED),
       },
       "Add Project",
     );
