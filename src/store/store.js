@@ -18,15 +18,18 @@ export class ProjectStore {
   }
 
   removeProject(projectId) {
-    const index = this.projects.findIndex(
-      (project) => project.id === projectId,
-    );
+    const project = this.findProject(projectId);
+    const index = this.projects.indexOf(project);
+    this.projects.splice(index, 1);
+    this.eventBus.publish(EVENTS.STATE.PROJECTS_UPDATED, this.projects);
+  }
 
-    if (index === -1) {
+  findProject(projectId) {
+    const project = this.projects.find((project) => project.id === projectId);
+    if (!project) {
       throw new Error(`No project found with id: ${projectId}`);
     }
 
-    this.projects.splice(index, 1);
-    this.eventBus.publish(EVENTS.STATE.PROJECTS_UPDATED, this.projects);
+    return project;
   }
 }
