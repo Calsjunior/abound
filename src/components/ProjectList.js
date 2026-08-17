@@ -21,9 +21,17 @@ export class ProjectList {
   renderList(projects) {
     return createElement(
       "ul",
-      { classes: ["project__list"] },
+      {
+        classes: ["project__list"],
+        onClick: (e) =>
+          this.eventBus.publish(EVENTS.UI.PROJECT_SELECTED, e.target.id),
+      },
       ...projects.map((project) =>
-        createElement("li", { classes: ["project__item"] }, project.name),
+        createElement(
+          "li",
+          { classes: ["project__item"], id: project.id },
+          project.name,
+        ),
       ),
     );
   }
