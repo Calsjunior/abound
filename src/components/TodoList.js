@@ -16,6 +16,8 @@ export class TodoList {
   }
 
   renderList(todos) {
+    if (todos.length === 0) return "";
+
     return createElement(
       "ul",
       {
