@@ -1,5 +1,6 @@
 import { EVENTS } from "../constants/events.js";
 import { Project } from "../models/Project.js";
+import { Todo } from "../models/Todo.js";
 
 export class ProjectStore {
   constructor(eventBus) {
@@ -9,6 +10,7 @@ export class ProjectStore {
 
     this.eventBus = eventBus;
     this.projects = [];
+    this.activeProjectId = null;
   }
 
   addProject(projectName) {
@@ -24,6 +26,12 @@ export class ProjectStore {
     this.eventBus.publish(EVENTS.STATE.PROJECTS_UPDATED, this.projects);
   }
 
+  addTodoToProject(todoData) {
+    const todo = new Todo(todoData);
+    this.activeProject.addTodo(todo);
+    this.eventBus.publish(EVENTS.STATE.TODOS_UPDATED, this.projects);
+  }
+
   findProject(projectId) {
     const project = this.projects.find((project) => project.id === projectId);
     if (!project) {
@@ -31,5 +39,13 @@ export class ProjectStore {
     }
 
     return project;
+  }
+
+  set activeProject(projectId) {
+    this.activeProjectId = projectId;
+  }
+
+  get activeProject() {
+    return this.findProject(this.activeProjectId);
   }
 }

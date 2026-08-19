@@ -1,6 +1,7 @@
 import { Dialog } from "./components/Dialog.js";
 import { ProjectForm } from "./components/ProjectForm.js";
 import { ProjectList } from "./components/ProjectList.js";
+import { TodoForm } from "./components/TodoForm.js";
 import { TodoList } from "./components/TodoList.js";
 import { ProjectController } from "./controllers/ProjectController.js";
 import { TodoController } from "./controllers/TodoControllers.js";
@@ -16,10 +17,11 @@ const projectList = new ProjectList(eventBus);
 const todoList = new TodoList(eventBus);
 
 const projectForm = new ProjectForm(eventBus);
-const dialog = new Dialog(projectForm.element);
+const projectDialog = new Dialog(projectForm.element);
+const todoForm = new TodoForm(eventBus);
+const todoDialog = new Dialog(todoForm.element);
 
-new ProjectController(eventBus, store, projectList, container, dialog);
-new TodoController(eventBus, store, todoList, container);
+new ProjectController(eventBus, store, projectList, container, projectDialog);
+new TodoController(eventBus, store, todoList, container, todoDialog);
 
 store.addProject("Inbox");
-store.projects[0].addTodo({ title: "hi" });

@@ -12,7 +12,7 @@ export class TodoList {
   }
 
   render(todos) {
-    this.container.replaceChildren(this.renderList(todos));
+    this.container.replaceChildren(this.renderList(todos), this.renderButton());
   }
 
   renderList(todos) {
@@ -28,6 +28,17 @@ export class TodoList {
           todo.title,
         ),
       ),
+    );
+  }
+
+  renderButton() {
+    return createElement(
+      "button",
+      {
+        classes: ["todo__button"],
+        onClick: () => this.eventBus.publish(EVENTS.UI.ADD_TODO_CLICKED),
+      },
+      "Add Todo",
     );
   }
 
