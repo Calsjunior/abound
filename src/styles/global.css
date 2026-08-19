@@ -1,0 +1,85 @@
+:root {
+  --color-lime-500: hsl(72 100 62);
+  --color-red-500: hsl(6 100 60);
+  --color-blue-500: hsl(242 100 55);
+  --color-neutral-100: hsl(60 2 90);
+  --color-neutral-200: hsl(60 2 70);
+  --color-neutral-300: hsl(60 2 50);
+  --color-neutral-400: hsl(60 2 30);
+  --color-neutral-500: hsl(60 2 10);
+}
+
+:root {
+  --bg-surface-body: var(--color-lime-500);
+  --bg-surface-base: var(--color-neutral-100);
+  --bg-surface-raised: var(--color-blue-500);
+
+  --bg-primary-accent: var(--color-lime-500);
+  --bg-info-accent: var(--color-blue-500);
+  --bg-notice-accent: var(--color-red-500);
+
+  --fg-inverted: var(--color-neutral-100);
+  --fg-primary-accent-hover: var(--color-lime-500);
+  --fg-neutral-body: var(--color-neutral-500);
+  --fg-neutral-heading: var(--color-neutral-500);
+
+  --border-neutral-intense: var(--color-neutral-500);
+  --border-neutral-ghost: var(--color-neutral-100);
+}
+
+:root {
+  --font-family-display: "Shrikhand", system-ui, sans-serif;
+  --font-family-body: "Space Grotesk", system-ui, sans-serif;
+
+  --font-size-xs: clamp(0.75rem, 0.725rem + 0.125vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
+  --font-size-base: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
+  --font-size-lg: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --letter-spacing-sm: -0.025em;
+  --letter-spacing-base: 0;
+  --letter-spacing-lg: 0.05em;
+}
+
+:root {
+  --text-body-font: var(--font-family-body);
+  --text-body-size: var(--font-size-base);
+  --text-body-weight: var(--font-weight-normal);
+}
+
+:root {
+  --spacing-0: 0;
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --spacing-md: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+  --spacing-lg: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  --spacing-xl: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
+  --spacing-2xl: clamp(2rem, 1.8rem + 1vw, 3rem);
+  --spacing-3xl: clamp(3rem, 2.8rem + 1vw, 4rem);
+  --spacing-4xl: clamp(4rem, 3.8rem + 1vw, 5rem);
+}
+
+body {
+  display: flex;
+  max-block-size: 100svh;
+  padding: var(--spacing-2xl);
+  font-family: var(--text-body-font);
+  font-size: var(--font-size-base);
+  font-weight: var(--text-body-weight);
+  color: var(--fg-neutral-body);
+  background-color: var(--bg-surface-body);
+}
+
+#content {
+  display: grid;
+  flex: 1;
+  grid-template-areas: "sidebar main";
+  grid-template-columns: auto 1fr;
+  border: 1px solid var(--border-neutral-intense);
+}

@@ -12,6 +12,7 @@ import "@fontsource-variable/space-grotesk";
 import "@fontsource/shrikhand";
 
 import "./styles/reset.css";
+import "./styles/global.css";
 
 const container = document.querySelector("#content");
 const eventBus = new EventEmitter();
