@@ -1,3 +1,4 @@
+import { INBOX } from "../constants/default.js";
 import { EVENTS } from "../constants/events.js";
 import { Project } from "../models/Project.js";
 import { Todo } from "../models/Todo.js";
@@ -11,6 +12,14 @@ export class ProjectStore {
     this.eventBus = eventBus;
     this.projects = [];
     this.activeProjectId = null;
+    this.init();
+  }
+
+  init() {
+    const inbox = new Project(INBOX.name);
+    inbox.id = INBOX.id;
+    this.projects.push(inbox);
+    this.activeProjectId = INBOX.id;
   }
 
   addProject(projectName) {
@@ -47,5 +56,12 @@ export class ProjectStore {
 
   get activeProject() {
     return this.findProject(this.activeProjectId);
+  }
+
+  get activeTodo() {
+    if (this.activeProjectId === INBOX.id)
+      return this.projects.flatMap((project) => project.todos);
+
+    return this.activeProject.todos;
   }
 }

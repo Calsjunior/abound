@@ -19,6 +19,8 @@ export class ProjectController {
     this.container.appendChild(this.component.element);
     document.body.appendChild(this.dialog.element);
 
+    this.component.render(this.store.projects);
+
     this.eventBus.subscribe(EVENTS.STATE.PROJECTS_UPDATED, (projects) => {
       this.component.render(projects);
     });
