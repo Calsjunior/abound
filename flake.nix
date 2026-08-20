@@ -27,6 +27,15 @@
           default = pkgs.mkShellNoCC {
             packages = with pkgs; [
               nodejs_24
+
+              (writeShellApplication {
+                name = "clamp";
+                runtimeInputs = [
+                  bc
+                  wl-clipboard
+                ];
+                text = builtins.readFile ./scripts/clamp.sh;
+              })
             ];
           };
         }
