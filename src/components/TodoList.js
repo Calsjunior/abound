@@ -8,11 +8,23 @@ export class TodoList {
     }
 
     this.eventBus = eventBus;
-    this.container = createElement("div", { classes: ["todo__container"] });
+    this.container = createElement("main", { classes: ["todo__container"] });
   }
 
   render(todos) {
-    this.container.replaceChildren(this.renderList(todos), this.renderButton());
+    this.container.replaceChildren(
+      this.renderTitle(),
+      this.renderButton(),
+      this.renderList(todos),
+    );
+  }
+
+  renderTitle() {
+    return createElement(
+      "header",
+      { classes: ["todo__header"] },
+      "do the right thing.",
+    );
   }
 
   renderList(todos) {
