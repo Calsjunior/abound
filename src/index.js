@@ -8,6 +8,9 @@ import { TodoController } from "./controllers/TodoControllers.js";
 import { ProjectStore } from "./store/store.js";
 import { EventEmitter } from "./utils/EventEmitter.js";
 
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/shrikhand";
+
 import "./styles/reset.css";
 
 const container = document.querySelector("#content");
