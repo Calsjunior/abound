@@ -19,7 +19,7 @@ export class TodoController {
     this.container.appendChild(this.component.element);
     document.body.appendChild(this.dialog.element);
 
-    this.component.render(this.store.projects.map((project) => project.todos));
+    this.component.render(this.store.activeTodo);
 
     this.eventBus.subscribe(EVENTS.UI.PROJECT_SELECTED, (projectId) => {
       this.store.activeProject = projectId;
