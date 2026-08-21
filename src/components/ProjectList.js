@@ -23,8 +23,10 @@ export class ProjectList {
       "ul",
       {
         classes: ["project__list"],
-        onClick: (e) =>
-          this.eventBus.publish(EVENTS.UI.PROJECT_SELECTED, e.target.id),
+        onClick: (e) => {
+          if (!e.target.id) return;
+          this.eventBus.publish(EVENTS.UI.PROJECT_SELECTED, e.target.id);
+        },
       },
       ...projects.map((project) =>
         createElement(
