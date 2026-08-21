@@ -33,14 +33,18 @@ export class ProjectList {
       ...projects.map((project) =>
         createElement(
           "li",
-          {
-            classes:
-              project.id === activeId
-                ? ["project__item", "project__item--active"]
-                : ["project__item"],
-            id: project.id,
-          },
-          project.name,
+          {},
+          createElement(
+            "button",
+            {
+              classes:
+                project.id === activeId
+                  ? ["project__item", "project__item--active"]
+                  : ["project__item"],
+              id: project.id,
+            },
+            project.name,
+          ),
         ),
       ),
     );
