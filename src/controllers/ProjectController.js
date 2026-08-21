@@ -19,10 +19,14 @@ export class ProjectController {
     this.container.appendChild(this.component.element);
     document.body.appendChild(this.dialog.element);
 
-    this.component.render(this.store.projects);
+    this.component.render(this.store.projects, this.store.activeProjectId);
 
-    this.eventBus.subscribe(EVENTS.STATE.PROJECTS_UPDATED, (projects) => {
-      this.component.render(projects);
+    this.eventBus.subscribe(EVENTS.STATE.PROJECTS_UPDATED, () => {
+      this.component.render(this.store.projects, this.store.activeProjectId);
+    });
+
+    this.eventBus.subscribe(EVENTS.UI.PROJECT_SELECTED, (projectId) => {
+      this.component.render(this.store.projects, projectId);
     });
 
     this.eventBus.subscribe(EVENTS.UI.ADD_PROJECT_CLICKED, () => {

@@ -11,27 +11,35 @@ export class ProjectList {
     this.container = createElement("aside", { classes: ["project__sidebar"] });
   }
 
-  render(projects) {
+  render(projects, activeId) {
     this.container.replaceChildren(
-      this.renderList(projects),
+      this.renderList(projects, activeId),
       this.renderButton(),
     );
   }
 
-  renderList(projects) {
+  renderList(projects, activeId) {
     return createElement(
       "ul",
       {
         classes: ["project__list"],
         onClick: (e) => {
           if (!e.target.id) return;
+          if (e.target.id === activeId) return;
+
           this.eventBus.publish(EVENTS.UI.PROJECT_SELECTED, e.target.id);
         },
       },
       ...projects.map((project) =>
         createElement(
           "li",
-          { classes: ["project__item"], id: project.id },
+          {
+            classes:
+              project.id === activeId
+                ? ["project__item", "project__item--active"]
+                : ["project__item"],
+            id: project.id,
+          },
           project.name,
         ),
       ),
