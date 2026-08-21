@@ -1,6 +1,8 @@
 import { EVENTS } from "../constants/events.js";
 import { createElement } from "../utils/dom.js";
 
+import "./ProjectList.css";
+
 export class ProjectList {
   constructor(eventBus) {
     if (typeof eventBus?.publish !== "function") {
@@ -57,7 +59,7 @@ export class ProjectList {
         classes: ["project__button"],
         onClick: () => this.eventBus.publish(EVENTS.UI.ADD_PROJECT_CLICKED),
       },
-      "Add Project",
+      "New Project",
     );
   }
 
