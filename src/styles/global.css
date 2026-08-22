@@ -15,8 +15,8 @@
   --bg-surface-raised: var(--color-blue-500);
 
   --bg-primary-accent: var(--color-lime-500);
-  --bg-info-accent: var(--color-blue-500);
-  --bg-notice-accent: var(--color-red-500);
+  --bg-secondary-accent: var(--color-blue-500);
+  --bg-tertiary-accent: var(--color-red-500);
 
   --bg-neutral-dimmed: var(--color-neutral-300);
 
@@ -25,8 +25,9 @@
   --fg-neutral-body: var(--color-neutral-500);
   --fg-neutral-heading: var(--color-neutral-500);
 
-  --border-surface-focus: var(--color-red-500);
-
+  --border-focus-base: var(--color-neutral-500);
+  --border-focus-inverted: var(--color-neutral-100);
+  --border-focus-accent: var(--color-red-500);
   --border-neutral-intense: var(--color-neutral-500);
   --border-neutral-ghost: var(--color-neutral-100);
 }

@@ -1,4 +1,5 @@
 .todo__container {
+  grid-area: main;
   padding: var(--spacing-xl);
   overflow: hidden;
   background-color: var(--bg-surface-base);
@@ -33,7 +34,7 @@
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);
     content: counter(todos, decimal-leading-zero);
-    background-color: var(--bg-notice-accent);
+    background-color: var(--bg-tertiary-accent);
   }
 
   &:not(:last-child) {
@@ -49,7 +50,7 @@
   text-align: left;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-lg);
-  background-color: var(--bg-notice-accent);
+  background-color: var(--bg-tertiary-accent);
   border: var(--spacing-0);
   border-block: 2px solid var(--border-neutral-intense);
 
@@ -60,6 +61,6 @@
   &:focus-visible {
     outline: var(--spacing-0);
     border-color: transparent;
-    box-shadow: 0 0 0 4px var(--border-neutral-intense);
+    box-shadow: 0 0 0 4px var(--border-focus-base);
   }
 }
