@@ -18,6 +18,8 @@
   --bg-info-accent: var(--color-blue-500);
   --bg-notice-accent: var(--color-red-500);
 
+  --bg-neutral-dimmed: var(--color-neutral-300);
+
   --fg-inverted: var(--color-neutral-100);
   --fg-primary-accent-hover: var(--color-lime-500);
   --fg-neutral-body: var(--color-neutral-500);
@@ -81,7 +83,12 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--text-body-weight);
   color: var(--fg-neutral-body);
-  background-color: var(--bg-surface-body);
+  background: radial-gradient(
+    circle,
+    var(--bg-neutral-dimmed) 1px,
+    var(--bg-surface-body) 1px
+  );
+  background-size: 1rem 1rem;
 }
 
 #content {
