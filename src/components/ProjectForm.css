@@ -1,0 +1,16 @@
+.project__form {
+  --stack-gap: var(--spacing-0);
+}
+
+.project-form__title {
+  inline-size: fit-content;
+  padding: var(--spacing-sm);
+  background-color: var(--bg-primary-accent);
+  border: 3px solid var(--border-neutral-intense);
+  box-shadow: 4px 4px var(--border-focus-accent);
+  transform: rotate(-1deg);
+}
+
+.project-form__button--submit {
+  background-color: var(--bg-primary-accent);
+}

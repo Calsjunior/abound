@@ -1,6 +1,9 @@
 import { EVENTS } from "../constants/events.js";
 import { createElement } from "../utils/dom.js";
 
+import "./ProjectForm.css";
+import "./Form.css";
+
 export class ProjectForm {
   constructor(eventBus) {
     if (typeof eventBus?.publish !== "function") {
@@ -14,14 +17,16 @@ export class ProjectForm {
   render() {
     const input = createElement("input", {
       type: "text",
-      placeholder: "Project Name",
+      placeholder: "e.g., Work",
       required: "true",
       id: "new-project",
+      class: "form__input",
     });
 
     return createElement(
       "form",
       {
+        classes: ["project__form", "stack"],
         onSubmit: (e) => {
           e.preventDefault();
 
@@ -29,9 +34,38 @@ export class ProjectForm {
           input.value = "";
         },
       },
-      createElement("label", { for: "new-project" }, "New Project"),
+      createElement(
+        "h2",
+        { classes: ["form__title", "project-form__title"] },
+        "New Project",
+      ),
+      createElement(
+        "label",
+        { classes: ["form__label"], for: "new-project" },
+        "Project Name",
+      ),
       input,
-      createElement("button", { type: "submit" }, "Create"),
+      createElement(
+        "div",
+        { classes: ["form__actions"] },
+        createElement(
+          "button",
+          { classes: ["form__button", "form__button--cancel"], type: "button" },
+          "Cancel",
+        ),
+        createElement(
+          "button",
+          {
+            classes: [
+              "form__button",
+              "form__button--submit",
+              "project-form__button--submit",
+            ],
+            type: "submit",
+          },
+          "Create",
+        ),
+      ),
     );
   }
 

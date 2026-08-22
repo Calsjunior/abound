@@ -26,6 +26,7 @@
   --fg-neutral-heading: var(--color-neutral-500);
 
   --border-focus-base: var(--color-neutral-500);
+  --border-focus-tertiary: var(--color-blue-500);
   --border-focus-inverted: var(--color-neutral-100);
   --border-focus-accent: var(--color-red-500);
   --border-neutral-intense: var(--color-neutral-500);
