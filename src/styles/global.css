@@ -91,3 +91,11 @@ body {
   grid-template-columns: auto 1fr;
   border: 1px solid var(--border-neutral-intense);
 }
+
+.stack {
+  --_gap: var(--stack-gap, var(--spacing-sm));
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--_gap);
+}

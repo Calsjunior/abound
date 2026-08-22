@@ -10,7 +10,9 @@ export class ProjectList {
     }
 
     this.eventBus = eventBus;
-    this.container = createElement("aside", { classes: ["project__sidebar"] });
+    this.container = createElement("aside", {
+      classes: ["project__sidebar", "stack"],
+    });
   }
 
   render(projects, activeId) {
@@ -24,7 +26,7 @@ export class ProjectList {
     return createElement(
       "ul",
       {
-        classes: ["project__list"],
+        classes: ["project__list", "stack"],
         onClick: (e) => {
           if (!e.target.id) return;
           if (e.target.id === activeId) return;

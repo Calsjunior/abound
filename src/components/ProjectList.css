@@ -1,10 +1,8 @@
 .project__sidebar {
   --sidebar-width: 260px;
 
-  display: flex;
-  flex-direction: column;
+  --stack-gap: var(--spacing-xl);
   grid-area: sidebar;
-  gap: var(--spacing-xl);
   justify-content: space-between;
   inline-size: var(--sidebar-width);
   padding: var(--spacing-xl);
@@ -13,9 +11,7 @@
 }
 
 .project__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  --stack-gap: var(--spacing-xs);
   overflow-y: auto;
 }
 
