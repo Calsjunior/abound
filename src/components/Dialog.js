@@ -1,12 +1,13 @@
 import { createElement } from "../utils/dom.js";
 
+import "./Dialog.css";
+
 export class Dialog {
   constructor(formElement) {
     this.container = createElement(
       "dialog",
       { classes: ["dialog"] },
       formElement,
-      createElement("button", { onClick: () => this.close() }, "Cancel"),
     );
   }
 

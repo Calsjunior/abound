@@ -1,0 +1,9 @@
+.dialog {
+  inline-size: min(100%, 450px);
+  padding: var(--spacing-xl);
+  background-color: var(--bg-surface-base);
+
+  &::backdrop {
+    backdrop-filter: blur(2px);
+  }
+}
