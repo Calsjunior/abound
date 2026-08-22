@@ -29,7 +29,7 @@
 
 :root {
   --font-family-display: "Shrikhand", system-ui, sans-serif;
-  --font-family-body: "Space Grotesk", system-ui, sans-serif;
+  --font-family-body: "Space Grotesk Variable", system-ui, sans-serif;
 
   --font-size-xs: clamp(0.75rem, 0.725rem + 0.125vw, 0.875rem);
   --font-size-sm: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
