@@ -56,4 +56,10 @@
   &:before {
     content: "+ ";
   }
+
+  &:focus-visible {
+    outline: var(--spacing-0);
+    border-color: transparent;
+    box-shadow: 0 0 0 4px var(--border-neutral-intense);
+  }
 }

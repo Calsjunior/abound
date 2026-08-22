@@ -25,6 +25,8 @@
   --fg-neutral-body: var(--color-neutral-500);
   --fg-neutral-heading: var(--color-neutral-500);
 
+  --border-surface-focus: var(--color-red-500);
+
   --border-neutral-intense: var(--color-neutral-500);
   --border-neutral-ghost: var(--color-neutral-100);
 }

@@ -33,6 +33,11 @@
   &:hover {
     --fg-color: var(--fg-primary-accent-hover);
   }
+
+  &:focus-visible {
+    outline: var(--spacing-0);
+    box-shadow: inset 0 0 0 3px var(--border-neutral-ghost);
+  }
 }
 
 .project__item--active {
@@ -55,5 +60,10 @@
 
   &:before {
     content: "+";
+  }
+
+  &:focus-visible {
+    outline: var(--spacing-0);
+    box-shadow: inset 0 0 0 6px var(--border-surface-focus);
   }
 }
