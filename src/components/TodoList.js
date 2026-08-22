@@ -1,6 +1,8 @@
 import { EVENTS } from "../constants/events.js";
 import { createElement } from "../utils/dom.js";
 
+import "./TodoList.css";
+
 export class TodoList {
   constructor(eventBus) {
     if (typeof eventBus?.publish !== "function") {
@@ -8,7 +10,9 @@ export class TodoList {
     }
 
     this.eventBus = eventBus;
-    this.container = createElement("main", { classes: ["todo__container"] });
+    this.container = createElement("main", {
+      classes: ["todo__container", "stack"],
+    });
   }
 
   render(todos) {
@@ -33,7 +37,7 @@ export class TodoList {
     return createElement(
       "ul",
       {
-        classes: ["todo__list"],
+        classes: ["todo__list", "stack"],
       },
       ...todos.map((todo) =>
         createElement(
