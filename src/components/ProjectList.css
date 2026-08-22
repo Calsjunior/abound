@@ -18,7 +18,7 @@
 .project__item {
   --_color: var(--fg-color, var(--fg-inverted));
 
-  width: 100%;
+  inline-size: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: var(--font-weight-semibold);
