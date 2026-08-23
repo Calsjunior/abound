@@ -38,5 +38,9 @@ export class TodoController {
       this.store.addTodoToProject({ title: todoData });
       this.dialog.close();
     });
+
+    this.eventBus.subscribe(EVENTS.UI.TODO_FORM_CANCELED, () => {
+      this.dialog.close();
+    });
   }
 }

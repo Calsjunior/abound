@@ -37,5 +37,9 @@ export class ProjectController {
       this.store.addProject(projectName);
       this.dialog.close();
     });
+
+    this.eventBus.subscribe(EVENTS.UI.PROJECT_FORM_CANCELED, () => {
+      this.dialog.close();
+    });
   }
 }

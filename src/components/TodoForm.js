@@ -31,7 +31,31 @@ export class TodoForm {
       },
       createElement("label", { for: "new-todo" }, "New Todo"),
       input,
-      createElement("button", { type: "submit" }, "Create"),
+      createElement(
+        "div",
+        { classes: ["form__actions"] },
+        createElement(
+          "button",
+          {
+            classes: ["form__button", "form__button--cancel"],
+            type: "button",
+            onClick: () => this.eventBus.publish(EVENTS.UI.TODO_FORM_CANCELED),
+          },
+          "Cancel",
+        ),
+        createElement(
+          "button",
+          {
+            classes: [
+              "form__button",
+              "form__button--submit",
+              "todo-form__button--submit",
+            ],
+            type: "submit",
+          },
+          "Add Todo",
+        ),
+      ),
     );
   }
 

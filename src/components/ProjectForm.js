@@ -50,7 +50,12 @@ export class ProjectForm {
         { classes: ["form__actions"] },
         createElement(
           "button",
-          { classes: ["form__button", "form__button--cancel"], type: "button" },
+          {
+            classes: ["form__button", "form__button--cancel"],
+            type: "button",
+            onClick: () =>
+              this.eventBus.publish(EVENTS.UI.PROJECT_FORM_CANCELED),
+          },
           "Cancel",
         ),
         createElement(
