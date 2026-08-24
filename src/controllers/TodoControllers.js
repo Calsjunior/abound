@@ -35,7 +35,7 @@ export class TodoController {
     });
 
     this.eventBus.subscribe(EVENTS.UI.TODO_FORM_SUBMITTED, (todoData) => {
-      this.store.addTodoToProject({ title: todoData });
+      this.store.addTodoToProject(todoData);
       this.dialog.close();
     });
 

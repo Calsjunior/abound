@@ -1,0 +1,74 @@
+.todo-form {
+  --stack-gap: var(--spacing-0);
+}
+
+.todo-form__title {
+  inline-size: fit-content;
+  padding: var(--spacing-sm);
+  background-color: var(--bg-tertiary-accent);
+  border: 3px solid var(--border-neutral-intense);
+  box-shadow: 4px 4px var(--border-neutral-intense);
+  transform: rotate(-1deg);
+
+  &:before {
+    content: "+ ";
+  }
+}
+
+.todo-form__radio {
+  --_bg: var(--bg-radio, transparent);
+  --_radio-size: 16px;
+
+  inline-size: var(--_radio-size);
+  block-size: var(--_radio-size);
+  padding: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background-color: var(--_bg);
+  background-clip: content-box;
+  border: 2px solid var(--border-neutral-intense);
+  border-radius: 50%;
+
+  &:checked {
+    --bg-radio: var(--bg-tertiary-accent);
+  }
+
+  & + span {
+    --_bg: var(--bg-span, var(--bg-tertiary-accent));
+    --_fg: var(--fg-span, inherit);
+
+    padding-inline: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--_fg);
+    background-color: var(--_bg);
+    border: 3px solid var(--border-neutral-intense);
+    box-shadow: 4px 4px var(--_bg);
+    transform: rotate(4deg);
+  }
+}
+
+.todo-form__radio--normal {
+  &:checked {
+    --bg-radio: var(--bg-primary-accent);
+  }
+
+  & + span {
+    --bg-span: var(--bg-primary-accent);
+  }
+}
+
+.todo-form__radio--low {
+  &:checked {
+    --bg-radio: var(--bg-secondary-accent);
+  }
+
+  & + span {
+    --bg-span: var(--bg-secondary-accent);
+    --fg-span: var(--fg-neutral-accent);
+  }
+}
+
+.todo-form__button--submit {
+  --bg-btn: var(--bg-tertiary-accent);
+}
