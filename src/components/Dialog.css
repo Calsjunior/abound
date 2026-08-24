@@ -1,5 +1,7 @@
 .dialog {
-  inline-size: min(100%, 450px);
+  --_dialog-width: 550px;
+
+  inline-size: min(100%, var(--_dialog-width));
   padding: var(--spacing-xl);
   background-color: var(--bg-neutral-accent);
 
