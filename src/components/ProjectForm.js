@@ -41,7 +41,10 @@ export class ProjectForm {
       ),
       createElement(
         "label",
-        { classes: ["form__label"], for: "new-project" },
+        {
+          classes: ["form__label", "form__label--required"],
+          for: "new-project",
+        },
         "Project Name",
       ),
       input,

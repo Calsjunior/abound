@@ -25,6 +25,16 @@
   letter-spacing: var(--letter-spacing-lg);
 }
 
+.form__label--required {
+  display: flex;
+
+  &::after {
+    margin-inline-start: auto;
+    color: var(--fg-notice-accent);
+    content: " required";
+  }
+}
+
 .form__input {
   padding: var(--spacing-md);
   background-color: inherit;

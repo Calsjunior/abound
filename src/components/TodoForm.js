@@ -24,7 +24,10 @@ export class TodoForm {
         { classes: ["form__group", "stack"] },
         createElement(
           "label",
-          { classes: ["form__label"], for: "todo-title" },
+          {
+            classes: ["form__label", "form__label--required"],
+            for: "todo-title",
+          },
           "Title",
         ),
         createElement("input", {

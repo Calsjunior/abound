@@ -1,6 +1,7 @@
 :root {
   --color-lime-500: hsl(72 100 62);
   --color-red-500: hsl(6 100 60);
+  --color-red-600: hsl(6 100 45);
   --color-blue-500: hsl(242 100 55);
   --color-neutral-100: hsl(60 2 90);
   --color-neutral-200: hsl(60 2 70);
@@ -20,6 +21,7 @@
   --fg-primary-accent-hover: var(--color-lime-500);
   --fg-neutral-accent: var(--color-neutral-100);
   --fg-neutral-intense: var(--color-neutral-500);
+  --fg-notice-accent: var(--color-red-600);
 
   --border-primary-accent: var(--color-lime-500);
   --border-secondary-accent-focus: var(--color-blue-500);
