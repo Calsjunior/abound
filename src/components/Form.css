@@ -45,8 +45,6 @@
 }
 
 .form__actions {
-  display: flex;
-  gap: var(--spacing-sm);
   justify-content: flex-end;
   margin-block-start: var(--spacing-lg);
 }

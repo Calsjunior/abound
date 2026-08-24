@@ -42,7 +42,7 @@ export class TodoList {
       ...todos.map((todo) =>
         createElement(
           "li",
-          { classes: ["todo__item"], id: todo.id },
+          { classes: ["todo__item", "cluster"], id: todo.id },
           todo.title,
         ),
       ),

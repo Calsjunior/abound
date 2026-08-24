@@ -20,9 +20,6 @@
 .todo__item {
   --_weight: var(--item-weight, var(--font-weight-bold));
 
-  display: flex;
-  gap: var(--spacing-sm);
-  align-items: center;
   padding-block-end: var(--spacing-sm);
   font-size: var(--font-size-lg);
   font-weight: var(--_weight);

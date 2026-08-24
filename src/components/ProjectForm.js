@@ -47,7 +47,7 @@ export class ProjectForm {
       input,
       createElement(
         "div",
-        { classes: ["form__actions"] },
+        { classes: ["form__actions", "cluster"] },
         createElement(
           "button",
           {
