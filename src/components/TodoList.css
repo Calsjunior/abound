@@ -39,6 +39,30 @@
   }
 }
 
+.todo__priority {
+  --_bg: var(--bg-priority, var(--bg-primary-accent));
+  --_fg: var(--fg-priority, inherit);
+
+  padding-inline: var(--spacing-xs);
+  margin-inline-start: auto;
+  margin-inline-end: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--_fg);
+  text-transform: uppercase;
+  background-color: var(--_bg);
+  border: 2px solid var(--border-neutral-intense);
+  transform: rotate(-4deg);
+}
+
+.todo__priority--low {
+  --bg-priority: var(--bg-secondary-accent);
+  --fg-priority: var(--fg-neutral-accent);
+}
+
+.todo__priority--high {
+  --bg-priority: var(--bg-tertiary-accent);
+}
+
 .todo__button {
   inline-size: 100%;
   padding-block: var(--spacing-sm);
