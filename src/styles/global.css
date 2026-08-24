@@ -108,3 +108,12 @@ body {
   flex-direction: column;
   gap: var(--_gap);
 }
+
+.cluster {
+  --_gap: var(--cluster-gap, var(--spacing-xs));
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--_gap);
+  align-items: center;
+}
