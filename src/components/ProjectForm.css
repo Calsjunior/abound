@@ -7,7 +7,7 @@
   padding: var(--spacing-sm);
   background-color: var(--bg-primary-accent);
   border: 3px solid var(--border-neutral-intense);
-  box-shadow: 4px 4px var(--border-focus-accent);
+  box-shadow: 4px 4px var(--border-tertiary-accent);
   transform: rotate(-1deg);
 }
 

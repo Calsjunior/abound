@@ -10,27 +10,25 @@
 }
 
 :root {
-  --bg-surface-body: var(--color-lime-500);
-  --bg-surface-base: var(--color-neutral-100);
-  --bg-surface-raised: var(--color-blue-500);
-
   --bg-primary-accent: var(--color-lime-500);
   --bg-secondary-accent: var(--color-blue-500);
   --bg-tertiary-accent: var(--color-red-500);
+  --bg-neutral-accent: var(--color-neutral-100);
+  --bg-neutral-medium: var(--color-neutral-300);
 
-  --bg-neutral-dimmed: var(--color-neutral-300);
-
-  --fg-inverted: var(--color-neutral-100);
+  --fg-primary-accent: var(--color-lime-500);
   --fg-primary-accent-hover: var(--color-lime-500);
-  --fg-neutral-body: var(--color-neutral-500);
-  --fg-neutral-heading: var(--color-neutral-500);
+  --fg-neutral-accent: var(--color-neutral-100);
+  --fg-neutral-intense: var(--color-neutral-500);
 
-  --border-focus-base: var(--color-neutral-500);
-  --border-focus-tertiary: var(--color-blue-500);
-  --border-focus-inverted: var(--color-neutral-100);
-  --border-focus-accent: var(--color-red-500);
+  --border-primary-accent: var(--color-lime-500);
+  --border-secondary-accent-focus: var(--color-blue-500);
+  --border-tertiary-accent: var(--color-red-500);
+  --border-tertiary-accent-focus: var(--color-red-500);
   --border-neutral-intense: var(--color-neutral-500);
-  --border-neutral-ghost: var(--color-neutral-100);
+  --border-neutral-intense-focus: var(--color-neutral-500);
+  --border-neutral-accent: var(--color-neutral-100);
+  --border-neutral-accent-focus: var(--color-neutral-100);
 }
 
 :root {
@@ -86,11 +84,11 @@ body {
   font-family: var(--text-body-font);
   font-size: var(--font-size-base);
   font-weight: var(--text-body-weight);
-  color: var(--fg-neutral-body);
+  color: var(--fg-neutral-intense);
   background: radial-gradient(
     circle,
-    var(--bg-neutral-dimmed) 1px,
-    var(--bg-surface-body) 1px
+    var(--bg-neutral-medium) 1px,
+    var(--bg-primary-accent) 1px
   );
   background-size: 1rem 1rem;
 }

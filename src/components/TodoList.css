@@ -2,7 +2,7 @@
   grid-area: main;
   padding: var(--spacing-xl);
   overflow: hidden;
-  background-color: var(--bg-surface-base);
+  background-color: var(--bg-neutral-accent);
 }
 
 .todo__header {
@@ -61,6 +61,6 @@
   &:focus-visible {
     outline: var(--spacing-0);
     border-color: transparent;
-    box-shadow: 0 0 0 4px var(--border-focus-base);
+    box-shadow: 0 0 0 4px var(--border-neutral-intense-focus);
   }
 }
