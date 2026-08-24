@@ -12,5 +12,5 @@
 }
 
 .project-form__button--submit {
-  background-color: var(--bg-primary-accent);
+  --bg-btn: var(--bg-primary-accent);
 }
