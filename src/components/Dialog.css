@@ -4,6 +4,6 @@
   background-color: var(--bg-neutral-accent);
 
   &::backdrop {
-    backdrop-filter: blur(2px);
+    background-color: hsl(from var(--bg-neutral-medium) h s l / 0.5);
   }
 }
