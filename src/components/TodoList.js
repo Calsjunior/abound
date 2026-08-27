@@ -51,7 +51,7 @@ export class TodoList {
             createElement(
               "span",
               { classes: ["todo__date"] },
-              formatRelativeDate(todo.dueDate),
+              formatRelativeDate(todo.dueDate) ?? "No due date",
             ),
             createElement(
               "span",

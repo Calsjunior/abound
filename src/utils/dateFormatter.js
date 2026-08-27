@@ -42,7 +42,7 @@ const dateFormatters = [
 ];
 
 export function formatRelativeDate(dateString, formatters = dateFormatters) {
-  if (!dateString) return "";
+  if (!dateString) return null;
 
   const inputDate = Temporal.PlainDate.from(dateString);
   const currentDate = Temporal.Now.plainDateISO();
