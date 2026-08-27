@@ -3,6 +3,7 @@
   --color-red-500: hsl(6 100 60);
   --color-red-600: hsl(6 100 45);
   --color-blue-500: hsl(242 100 55);
+  --color-neutral-50: hsl(60 2 100);
   --color-neutral-100: hsl(60 2 90);
   --color-neutral-200: hsl(60 2 70);
   --color-neutral-300: hsl(60 2 50);
@@ -14,6 +15,7 @@
   --bg-primary-accent: var(--color-lime-500);
   --bg-secondary-accent: var(--color-blue-500);
   --bg-tertiary-accent: var(--color-red-500);
+  --bg-neutral-ghost: var(--color-neutral-50);
   --bg-neutral-accent: var(--color-neutral-100);
   --bg-neutral-medium: var(--color-neutral-300);
 

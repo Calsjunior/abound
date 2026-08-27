@@ -45,9 +45,16 @@ export class TodoList {
           { classes: ["todo__item", "cluster"], id: todo.id },
           todo.title,
           createElement(
-            "span",
-            { classes: ["todo__priority", `todo__priority--${todo.priority}`] },
-            todo.priority,
+            "div",
+            { classes: ["todo__tags", "cluster"] },
+            createElement("span", { classes: ["todo__date"] }, todo.dueDate),
+            createElement(
+              "span",
+              {
+                classes: ["todo__priority", `todo__priority--${todo.priority}`],
+              },
+              todo.priority,
+            ),
           ),
         ),
       ),
