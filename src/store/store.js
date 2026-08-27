@@ -1,4 +1,5 @@
-import { INBOX } from "../constants/default.js";
+import { Temporal } from "@js-temporal/polyfill";
+import { INBOX, TODAY } from "../constants/default.js";
 import { EVENTS } from "../constants/events.js";
 import { Project } from "../models/Project.js";
 import { Todo } from "../models/Todo.js";
@@ -20,6 +21,10 @@ export class ProjectStore {
     inbox.id = INBOX.id;
     this.projects.push(inbox);
     this.activeProjectId = INBOX.id;
+
+    const today = new Project(TODAY.name);
+    today.id = TODAY.id;
+    this.projects.push(today);
   }
 
   addProject(projectName) {
@@ -58,9 +63,17 @@ export class ProjectStore {
     return this.findProject(this.activeProjectId);
   }
 
+  // FIXME: Will need a refactor in the case of more manual generated projects
   get activeTodo() {
     if (this.activeProjectId === INBOX.id)
       return this.projects.flatMap((project) => project.todos);
+
+    if (this.activeProjectId === TODAY.id) {
+      const today = Temporal.Now.plainDateISO().toString();
+      return this.projects
+        .flatMap((project) => project.todos)
+        .filter((todo) => todo.dueDate === today);
+    }
 
     return this.activeProject.todos;
   }
