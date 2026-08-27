@@ -1,4 +1,5 @@
 import { EVENTS } from "../constants/events.js";
+import { formatRelativeDate } from "../utils/dateFormatter.js";
 import { createElement } from "../utils/dom.js";
 
 import "./TodoList.css";
@@ -47,7 +48,11 @@ export class TodoList {
           createElement(
             "div",
             { classes: ["todo__tags", "cluster"] },
-            createElement("span", { classes: ["todo__date"] }, todo.dueDate),
+            createElement(
+              "span",
+              { classes: ["todo__date"] },
+              formatRelativeDate(todo.dueDate),
+            ),
             createElement(
               "span",
               {
