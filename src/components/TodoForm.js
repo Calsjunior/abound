@@ -1,3 +1,4 @@
+import { Temporal } from "@js-temporal/polyfill";
 import { EVENTS } from "../constants/events.js";
 import { createElement } from "../utils/dom.js";
 
@@ -69,6 +70,7 @@ export class TodoForm {
             id: "todo-due",
             type: "date",
             name: "dueDate",
+            value: Temporal.Now.plainDateISO().toString(),
             classes: ["form__input"],
           }),
         ),
