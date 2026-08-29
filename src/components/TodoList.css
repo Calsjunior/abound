@@ -20,10 +20,13 @@
 .todo__item {
   --_weight: var(--item-weight, var(--font-weight-bold));
 
-  padding-block-end: var(--spacing-sm);
+  inline-size: 100%;
+  padding: var(--spacing-0);
   font-size: var(--font-size-lg);
   font-weight: var(--_weight);
   counter-increment: todos;
+  background-color: inherit;
+  border: var(--spacing-0);
 
   &:before {
     --item-weight: var(--font-weight-semibold);

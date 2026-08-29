@@ -43,22 +43,29 @@ export class TodoList {
       ...todos.map((todo) =>
         createElement(
           "li",
-          { classes: ["todo__item", "cluster"], id: todo.id },
-          todo.title,
+          {},
           createElement(
-            "div",
-            { classes: ["todo__tags", "cluster"] },
+            "button",
+            { classes: ["todo__item", "cluster"], id: todo.id },
+            todo.title,
             createElement(
-              "span",
-              { classes: ["todo__date"] },
-              formatRelativeDate(todo.dueDate) ?? "No due date",
-            ),
-            createElement(
-              "span",
-              {
-                classes: ["todo__priority", `todo__priority--${todo.priority}`],
-              },
-              todo.priority,
+              "div",
+              { classes: ["todo__tags", "cluster"] },
+              createElement(
+                "span",
+                { classes: ["todo__date"] },
+                formatRelativeDate(todo.dueDate) ?? "No due date",
+              ),
+              createElement(
+                "span",
+                {
+                  classes: [
+                    "todo__priority",
+                    `todo__priority--${todo.priority}`,
+                  ],
+                },
+                todo.priority,
+              ),
             ),
           ),
         ),
