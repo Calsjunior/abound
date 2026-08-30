@@ -19,6 +19,10 @@ export class Project {
   getTodos() {
     return this.todos;
   }
+
+  static fromJSON(data) {
+    return Object.assign(Object.create(Project.prototype), data);
+  }
 }
 
 export class InboxProject extends Project {

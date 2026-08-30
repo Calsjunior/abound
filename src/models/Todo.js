@@ -24,4 +24,8 @@ export class Todo {
       completed: false,
     });
   }
+
+  static fromJSON(data) {
+    return Object.assign(Object.create(Todo.prototype), data);
+  }
 }

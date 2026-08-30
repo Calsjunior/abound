@@ -3,12 +3,22 @@ import { Project } from "../models/Project.js";
 import { Todo } from "../models/Todo.js";
 
 export class ProjectStore {
-  constructor(eventBus, defaultProjects = []) {
+  constructor(eventBus, db, defaultProjects = []) {
     if (typeof eventBus?.publish !== "function") {
       throw new Error("An eventBus with 'publish' method is required.");
     }
 
+    if (
+      typeof db?.getProjects !== "function" &&
+      typeof db?.saveProjects !== "function"
+    ) {
+      throw new Error(
+        "A database with 'getProjects' and 'saveProjects' methods are required.",
+      );
+    }
+
     this.eventBus = eventBus;
+    this.db = db;
     this.defaultProjects = defaultProjects;
     this.projects = [];
     this.activeProjectId = null;
@@ -16,15 +26,47 @@ export class ProjectStore {
   }
 
   init() {
-    this.projects = [...this.defaultProjects];
-    this.activeProjectId =
-      this.defaultProjects.length > 0 ? this.defaultProjects[0].id : null;
+    this.hydrateProjects();
+    this.hydrateActiveProjectId();
+  }
+
+  hydrateProjects() {
+    const rawProjects = this.db.getProjects();
+    if (!rawProjects?.length) {
+      this.projects = [...this.defaultProjects];
+      this.activeProjectId = this.defaultProjects[0]?.id ?? null;
+      return;
+    }
+
+    this.projects = rawProjects.map((rawProject) => {
+      // If the saved project is a default project, i.e., inbox, and today,
+      // reuse their existing instances to preserve their own getTodos methods.
+      // Otherwise, recreate as normal Project instance.
+      const project =
+        this.defaultProjects.find(
+          (defaultProject) => defaultProject.id === rawProject.id,
+        ) ?? Project.fromJSON(rawProject);
+
+      project.todos = rawProject.todos.map((todo) => Todo.fromJSON(todo));
+
+      return project;
+    });
+  }
+
+  hydrateActiveProjectId() {
+    const rawActiveProjectId = this.db.getActiveProjectId();
+    const isValidId = this.projects.some(
+      (project) => project.id === rawActiveProjectId,
+    );
+
+    this.activeProjectId = isValidId ? rawActiveProjectId : this.projects[0].id;
   }
 
   addProject(projectName) {
     const project = new Project(projectName);
     this.projects.push(project);
     this.eventBus.publish(EVENTS.STATE.PROJECTS_UPDATED, this.projects);
+    this.db.saveProjects(this.projects);
   }
 
   removeProject(projectId) {
@@ -32,12 +74,14 @@ export class ProjectStore {
     const index = this.projects.indexOf(project);
     this.projects.splice(index, 1);
     this.eventBus.publish(EVENTS.STATE.PROJECTS_UPDATED, this.projects);
+    this.db.saveProjects(this.projects);
   }
 
   addTodoToProject(todoData) {
     const todo = new Todo(todoData);
     this.activeProject.addTodo(todo);
     this.eventBus.publish(EVENTS.STATE.TODOS_UPDATED, this.projects);
+    this.db.saveProjects(this.projects);
   }
 
   findProject(projectId) {
@@ -51,6 +95,7 @@ export class ProjectStore {
 
   set activeProject(projectId) {
     this.activeProjectId = projectId;
+    this.db.saveActiveProjectId(projectId);
   }
 
   get activeProject() {
