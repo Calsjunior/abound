@@ -37,7 +37,8 @@
     background-color: var(--bg-tertiary-accent);
   }
 
-  &:not(:last-child) {
+  li:not(:last-child) > & {
+    padding-block-end: var(--spacing-sm);
     border-block-end: 1px solid var(--border-neutral-intense);
   }
 }
