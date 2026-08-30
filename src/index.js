@@ -5,6 +5,7 @@ import { TodoForm } from "./components/TodoForm.js";
 import { TodoList } from "./components/TodoList.js";
 import { ProjectController } from "./controllers/ProjectController.js";
 import { TodoController } from "./controllers/TodoControllers.js";
+import { InboxProject, TodayProject } from "./models/Project.js";
 import { ProjectStore } from "./store/store.js";
 import { EventEmitter } from "./utils/EventEmitter.js";
 
@@ -14,9 +15,11 @@ import "@fontsource/shrikhand";
 import "./styles/reset.css";
 import "./styles/global.css";
 
+const defaultProjects = [new InboxProject(), new TodayProject()];
+
 const container = document.querySelector("#content");
 const eventBus = new EventEmitter();
-const store = new ProjectStore(eventBus);
+const store = new ProjectStore(eventBus, defaultProjects);
 const projectList = new ProjectList(eventBus);
 const todoList = new TodoList(eventBus);
 
