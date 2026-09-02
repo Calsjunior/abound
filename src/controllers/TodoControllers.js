@@ -31,6 +31,7 @@ export class TodoController {
     this.eventBus.subscribe(EVENTS.UI.TODO_SELECTED, (todoId) => {
       this.editingTodoId = todoId;
       const todo = this.store.findTodo(todoId);
+      this.form.setMode("edit");
       this.form.populate(todo);
       this.dialog.open();
     });
@@ -41,6 +42,7 @@ export class TodoController {
 
     this.eventBus.subscribe(EVENTS.UI.ADD_TODO_CLICKED, () => {
       this.editingTodoId = null;
+      this.form.setMode();
       this.form.clear();
       this.dialog.open();
     });

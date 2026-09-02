@@ -213,6 +213,13 @@ export class TodoForm {
     );
   }
 
+  setMode(mode) {
+    const isEditing = mode === "edit";
+
+    this.formTitle.textContent = isEditing ? "Edit Todo" : "Add Todo";
+    this.submitButton.textContent = isEditing ? "Update Todo" : "Save Todo";
+  }
+
   populate({ title, description, dueDate, priority, notes }) {
     this.titleInput.value = title;
     this.descriptionInput.value = description;
