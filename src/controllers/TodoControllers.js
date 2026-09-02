@@ -1,7 +1,7 @@
 import { EVENTS } from "../constants/events.js";
 
 export class TodoController {
-  constructor(eventBus, store, component, container, dialog) {
+  constructor(eventBus, store, component, container, form, dialog) {
     if (typeof eventBus?.subscribe !== "function") {
       throw new Error("An eventBus with 'subscribe' method is required.");
     }
@@ -10,8 +10,10 @@ export class TodoController {
     this.store = store;
     this.component = component;
     this.container = container;
+    this.form = form;
     this.dialog = dialog;
 
+    this.editingTodoId = null;
     this.init();
   }
 
@@ -26,16 +28,30 @@ export class TodoController {
       this.component.render(this.store.activeTodo);
     });
 
+    this.eventBus.subscribe(EVENTS.UI.TODO_SELECTED, (todoId) => {
+      this.editingTodoId = todoId;
+      const todo = this.store.findTodo(todoId);
+      this.form.populate(todo);
+      this.dialog.open();
+    });
+
     this.eventBus.subscribe(EVENTS.STATE.TODOS_UPDATED, () => {
       this.component.render(this.store.activeTodo);
     });
 
     this.eventBus.subscribe(EVENTS.UI.ADD_TODO_CLICKED, () => {
+      this.editingTodoId = null;
+      this.form.clear();
       this.dialog.open();
     });
 
     this.eventBus.subscribe(EVENTS.UI.TODO_FORM_SUBMITTED, (todoData) => {
-      this.store.addTodoToProject(todoData);
+      if (this.editingTodoId) {
+        this.store.updateTodo(this.editingTodoId, todoData);
+      } else {
+        this.store.addTodoToProject(todoData);
+      }
+      this.editingTodoId = null;
       this.dialog.close();
     });
 

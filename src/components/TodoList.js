@@ -39,6 +39,11 @@ export class TodoList {
       "ul",
       {
         classes: ["todo__list", "stack"],
+        onClick: (e) => {
+          if (!e.target.id) return;
+
+          this.eventBus.publish(EVENTS.UI.TODO_SELECTED, e.target.id);
+        },
       },
       ...todos.map((todo) =>
         createElement(

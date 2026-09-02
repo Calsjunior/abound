@@ -84,6 +84,13 @@ export class ProjectStore {
     this.db.saveProjects(this.projects);
   }
 
+  updateTodo(todoId, todoData) {
+    const todo = this.findTodo(todoId);
+    todo.update(todoData);
+    this.eventBus.publish(EVENTS.STATE.TODOS_UPDATED);
+    this.db.saveProjects(this.projects);
+  }
+
   findProject(projectId) {
     const project = this.projects.find((project) => project.id === projectId);
     if (!project) {
@@ -91,6 +98,16 @@ export class ProjectStore {
     }
 
     return project;
+  }
+
+  findTodo(todoId) {
+    for (const project of this.projects) {
+      const todo = project.todos.find((todo) => todo.id === todoId);
+
+      if (todo) return todo;
+    }
+
+    throw new Error(`No todo found with id: ${todoId}`);
   }
 
   set activeProject(projectId) {

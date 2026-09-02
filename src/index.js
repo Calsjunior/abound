@@ -31,4 +31,4 @@ const todoForm = new TodoForm(eventBus);
 const todoDialog = new Dialog(todoForm.element);
 
 new ProjectController(eventBus, store, projectList, container, projectDialog);
-new TodoController(eventBus, store, todoList, container, todoDialog);
+new TodoController(eventBus, store, todoList, container, todoForm, todoDialog);

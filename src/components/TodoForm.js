@@ -17,6 +17,81 @@ export class TodoForm {
 
   // Hell hole
   render() {
+    this.titleInput = createElement("input", {
+      id: "todo-title",
+      type: "text",
+      name: "title",
+      placeholder: "e.g., Eat the spreadsheet",
+      required: "true",
+      classes: ["form__input"],
+    });
+
+    this.descriptionInput = createElement("textarea", {
+      id: "todo-description",
+      name: "description",
+      placeholder: "Optional Details...",
+      classes: ["form__input", "form__textarea"],
+    });
+
+    this.dueDateInput = createElement("input", {
+      id: "todo-due",
+      type: "date",
+      name: "dueDate",
+      value: Temporal.Now.plainDateISO().toString(),
+      classes: ["form__input"],
+    });
+
+    this.highPriorityInput = createElement("input", {
+      id: "priority-high",
+      type: "radio",
+      name: "priority",
+      value: "high",
+      classes: ["todo-form__radio", "todo-form__radio--high"],
+    });
+
+    this.normalPriorityInput = createElement("input", {
+      id: "priority-normal",
+      type: "radio",
+      name: "priority",
+      value: "normal",
+      checked: true,
+      classes: ["todo-form__radio", "todo-form__radio--normal"],
+    });
+
+    this.lowPriorityInput = createElement("input", {
+      id: "priority-low",
+      type: "radio",
+      name: "priority",
+      value: "low",
+      classes: ["todo-form__radio", "todo-form__radio--low"],
+    });
+
+    this.notesInput = createElement("textarea", {
+      id: "todo-notes",
+      name: "notes",
+      placeholder: "Additional thoughts, or links...",
+      classes: ["form__input", "form__textarea"],
+    });
+
+    this.formTitle = createElement(
+      "h2",
+      { classes: ["form__title", "todo-form__title"] },
+      "Add Todo",
+    );
+
+    this.submitButton = createElement(
+      "button",
+      {
+        classes: [
+          "form__button",
+          "form__button--submit",
+          "todo-form__button--submit",
+        ],
+        type: "submit",
+      },
+      "Save Todo",
+    );
+
     const formFields = createElement(
       "FRAG",
       {},
@@ -31,14 +106,7 @@ export class TodoForm {
           },
           "Title",
         ),
-        createElement("input", {
-          id: "todo-title",
-          type: "text",
-          name: "title",
-          placeholder: "e.g., Eat the spreadsheet",
-          required: "true",
-          classes: ["form__input"],
-        }),
+        this.titleInput,
       ),
       createElement(
         "div",
@@ -48,12 +116,7 @@ export class TodoForm {
           { classes: ["form__label"], for: "todo-description" },
           "Description",
         ),
-        createElement("textarea", {
-          id: "todo-description",
-          name: "description",
-          placeholder: "Optional Details...",
-          classes: ["form__input", "form__textarea"],
-        }),
+        this.descriptionInput,
       ),
       createElement(
         "div",
@@ -66,13 +129,7 @@ export class TodoForm {
             { classes: ["form__label"], for: "todo-due" },
             "Due Date",
           ),
-          createElement("input", {
-            id: "todo-due",
-            type: "date",
-            name: "dueDate",
-            value: Temporal.Now.plainDateISO().toString(),
-            classes: ["form__input"],
-          }),
+          this.dueDateInput,
         ),
         createElement(
           "fieldset",
@@ -87,13 +144,7 @@ export class TodoForm {
                 for: "priority-high",
                 classes: ["form__label", "cluster"],
               },
-              createElement("input", {
-                id: "priority-high",
-                type: "radio",
-                name: "priority",
-                value: "high",
-                classes: ["todo-form__radio", "todo-form__radio--high"],
-              }),
+              this.highPriorityInput,
               createElement("span", {}, "High"),
             ),
             createElement(
@@ -102,14 +153,7 @@ export class TodoForm {
                 for: "priority-normal",
                 classes: ["form__label", "cluster"],
               },
-              createElement("input", {
-                id: "priority-normal",
-                type: "radio",
-                name: "priority",
-                value: "normal",
-                checked: true,
-                classes: ["todo-form__radio", "todo-form__radio--normal"],
-              }),
+              this.normalPriorityInput,
               createElement("span", {}, "Normal"),
             ),
             createElement(
@@ -118,13 +162,7 @@ export class TodoForm {
                 for: "priority-low",
                 classes: ["form__label", "cluster"],
               },
-              createElement("input", {
-                id: "priority-low",
-                type: "radio",
-                name: "priority",
-                value: "low",
-                classes: ["todo-form__radio", "todo-form__radio--low"],
-              }),
+              this.lowPriorityInput,
               createElement("span", {}, "Low"),
             ),
           ),
@@ -138,12 +176,7 @@ export class TodoForm {
           { classes: ["form__label"], for: "todo-notes" },
           "Notes",
         ),
-        createElement("textarea", {
-          id: "todo-notes",
-          name: "notes",
-          placeholder: "Additional thoughts, or links...",
-          classes: ["form__input", "form__textarea"],
-        }),
+        this.notesInput,
         // TODO: implement checklist
       ),
     );
@@ -161,11 +194,7 @@ export class TodoForm {
           e.target.reset();
         },
       },
-      createElement(
-        "h2",
-        { classes: ["form__title", "todo-form__title"] },
-        "Add Todo",
-      ),
+      this.formTitle,
       formFields,
       createElement(
         "div",
@@ -179,20 +208,23 @@ export class TodoForm {
           },
           "Cancel",
         ),
-        createElement(
-          "button",
-          {
-            classes: [
-              "form__button",
-              "form__button--submit",
-              "todo-form__button--submit",
-            ],
-            type: "submit",
-          },
-          "Save Todo",
-        ),
+        this.submitButton,
       ),
     );
+  }
+
+  populate({ title, description, dueDate, priority, notes }) {
+    this.titleInput.value = title;
+    this.descriptionInput.value = description;
+    this.dueDateInput.value = dueDate;
+    this.lowPriorityInput = priority === "high";
+    this.normalPriorityInput = priority === "normal";
+    this.lowPriorityInput = priority === "low";
+    this.notesInput = notes;
+  }
+
+  clear() {
+    this.container.reset();
   }
 
   get element() {
