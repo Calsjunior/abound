@@ -48,7 +48,11 @@ export class TodoList {
       ...todos.map((todo) =>
         createElement(
           "li",
-          {},
+          { classes: ["todo"] },
+          createElement("input", {
+            classes: ["todo__checkbox"],
+            type: "checkbox",
+          }),
           createElement(
             "button",
             { classes: ["todo__item", "cluster"], id: todo.id },

@@ -6,15 +6,53 @@
 }
 
 .todo__header {
+  --todo-header-size: clamp(1.5rem, 1.1rem + 2vw, 3.5rem);
+
   --stack-gap: var(--spacing-xs);
   font-family: var(--font-family-display);
-  font-size: var(--font-size-5xl);
+  font-size: var(--todo-header-size);
 }
 
 .todo__list {
-  --stack-gap: var(--spacing-md);
+  --stack-gap: var(--spacing-0);
   overflow-y: auto;
-  counter-reset: todos;
+}
+
+.todo {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  padding-block: var(--spacing-md);
+
+  &:not(:last-child) {
+    border-block-end: 1px solid var(--border-neutral-intense);
+  }
+}
+
+.todo__checkbox {
+  --_size: 1.5rem;
+
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  appearance: none;
+  cursor: pointer;
+  background-color: var(--bg-tertiary-accent);
+  border: 2px solid var(--border-tertiary-accent);
+  box-shadow: 2px 2px var(--border-neutral-intense);
+
+  &:checked {
+    background-color: var(--bg-tertiary-accent);
+
+    &::after {
+      display: grid;
+      place-content: center;
+      block-size: 100%;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--fg-neutral-intense);
+      content: "✓ ";
+    }
+  }
 }
 
 .todo__item {
@@ -24,7 +62,6 @@
   padding: var(--spacing-0);
   font-size: var(--font-size-lg);
   font-weight: var(--_weight);
-  counter-increment: todos;
   background-color: inherit;
   border: var(--spacing-0);
 
@@ -33,13 +70,7 @@
     padding: var(--spacing-xs);
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);
-    content: counter(todos, decimal-leading-zero);
     background-color: var(--bg-tertiary-accent);
-  }
-
-  li:not(:last-child) > & {
-    padding-block-end: var(--spacing-sm);
-    border-block-end: 1px solid var(--border-neutral-intense);
   }
 }
 
