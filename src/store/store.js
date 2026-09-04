@@ -85,7 +85,7 @@ export class ProjectStore {
   }
 
   updateTodo(todoId, todoData) {
-    const todo = this.findTodo(todoId);
+    const todo = this.findTodoById(todoId);
     todo.update(todoData);
     this.eventBus.publish(EVENTS.STATE.TODOS_UPDATED);
     this.db.saveProjects(this.projects);
@@ -100,7 +100,7 @@ export class ProjectStore {
     return project;
   }
 
-  findTodo(todoId) {
+  findTodoById(todoId) {
     for (const project of this.projects) {
       const todo = project.todos.find((todo) => todo.id === todoId);
 

@@ -30,7 +30,7 @@ export class TodoController {
 
     this.eventBus.subscribe(EVENTS.UI.TODO_SELECTED, (todoId) => {
       this.editingTodoId = todoId;
-      const todo = this.store.findTodo(todoId);
+      const todo = this.store.findTodoById(todoId);
       this.form.setMode("edit");
       this.form.populate(todo);
       this.dialog.open();
