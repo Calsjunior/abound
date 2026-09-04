@@ -84,6 +84,13 @@ export class ProjectStore {
     this.db.saveProjects(this.projects);
   }
 
+  toggleTodoComplete(todoId) {
+    const todo = this.findTodoById(todoId);
+    todo.toggleComplete();
+    this.eventBus.publish(EVENTS.STATE.TODOS_UPDATED, this.projects);
+    this.db.saveProjects(this.projects);
+  }
+
   updateTodo(todoId, todoData) {
     const todo = this.findTodoById(todoId);
     todo.update(todoData);

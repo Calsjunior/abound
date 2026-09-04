@@ -17,6 +17,10 @@ export class Todo {
     this.completed = false;
   }
 
+  toggleComplete() {
+    this.completed = !this.completed;
+  }
+
   addChecklistItem(text) {
     this.checklist.push({
       id: crypto.randomUUID(),

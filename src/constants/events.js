@@ -12,5 +12,6 @@ export const EVENTS = {
     TODO_FORM_SUBMITTED: "ui:todo-form-submitted",
     TODO_FORM_CANCELED: "ui:todo-form-canceled",
     TODO_SELECTED: "ui:todo-selected",
+    TODO_COMPLETE_TOGGLED: "ui:todo-complete-toggled",
   },
 };

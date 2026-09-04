@@ -45,40 +45,57 @@ export class TodoList {
           this.eventBus.publish(EVENTS.UI.TODO_SELECTED, e.target.id);
         },
       },
-      ...todos.map((todo) =>
-        createElement(
-          "li",
-          { classes: ["todo"] },
-          createElement("input", {
-            classes: ["todo__checkbox"],
-            type: "checkbox",
-          }),
+      ...todos
+        .filter((todo) => !todo.completed)
+        .map((todo) =>
           createElement(
-            "button",
-            { classes: ["todo__item", "cluster"], id: todo.id },
-            todo.title,
+            "li",
+            { classes: ["todo"] },
+            createElement("input", {
+              classes: ["todo__checkbox"],
+              type: "checkbox",
+              onChange: (e) => {
+                const animationDuration = 700;
+                e.target.parentElement.classList.add("todo--completing");
+                e.target.parentElement.style.setProperty(
+                  "--_todo-animation",
+                  animationDuration,
+                );
+
+                setTimeout(() => {
+                  this.eventBus.publish(
+                    EVENTS.UI.TODO_COMPLETE_TOGGLED,
+                    todo.id,
+                  );
+                }, animationDuration);
+              },
+            }),
             createElement(
-              "div",
-              { classes: ["todo__tags", "cluster"] },
+              "button",
+              { classes: ["todo__item", "cluster"], id: todo.id },
+              todo.title,
               createElement(
-                "span",
-                { classes: ["todo__date"] },
-                formatRelativeDate(todo.dueDate) ?? "No due date",
-              ),
-              createElement(
-                "span",
-                {
-                  classes: [
-                    "todo__priority",
-                    `todo__priority--${todo.priority}`,
-                  ],
-                },
-                todo.priority,
+                "div",
+                { classes: ["todo__tags", "cluster"] },
+                createElement(
+                  "span",
+                  { classes: ["todo__date"] },
+                  formatRelativeDate(todo.dueDate) ?? "No due date",
+                ),
+                createElement(
+                  "span",
+                  {
+                    classes: [
+                      "todo__priority",
+                      `todo__priority--${todo.priority}`,
+                    ],
+                  },
+                  todo.priority,
+                ),
               ),
             ),
           ),
         ),
-      ),
     );
   }
 

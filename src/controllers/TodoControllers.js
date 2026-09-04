@@ -28,6 +28,10 @@ export class TodoController {
       this.component.render(this.store.activeTodo);
     });
 
+    this.eventBus.subscribe(EVENTS.UI.TODO_COMPLETE_TOGGLED, (todoId) => {
+      this.store.toggleTodoComplete(todoId);
+    });
+
     this.eventBus.subscribe(EVENTS.UI.TODO_SELECTED, (todoId) => {
       this.editingTodoId = todoId;
       const todo = this.store.findTodoById(todoId);
