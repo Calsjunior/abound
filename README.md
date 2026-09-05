@@ -2,13 +2,36 @@
 
 For managing the abundance of to-dos that get left around.
 
-## Features (Work in Progress!)
+![Preview Desktop](./.github/assets/showcase-desktop.png)
+![Preview Mobile 1](./.github/assets/01-showcase-mobile.png)
+![Preview Mobile 2](./.github/assets/02-showcase-mobile.png)
+
+<!-- TOC -->
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Preview](#preview)
+- [Features](#features)
+- [Developer's Note](#developers-note)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
+
+<!-- /TOC -->
+
+## Preview
+
+[View Live Demo](https://calsjunior.github.io/abound/)
+
+## Features
 
 - To-dos are grouped into specific projects that they were created in.
 - Includes default projects like Inbox for displaying all to-dos, and Today for
   displaying all to-dos due today using the Temporal API.
 - Saves your to-dos and projects with `localStorage` using the Web Storage API.
+- Toggle to-dos to mark them as complete, or delete them.
 - Visual indicators for different priority tasks.
+- Responsive design.
 
 ## Developer's Note
 
@@ -91,3 +114,13 @@ the performance, but then I would be sitting here forever.
 
 For now, this approach keeps the logic unified, and the components decoupled,
 which is what I care about most.
+
+## Acknowledgments
+
+This project was completed as a part of [The Odin
+Project's](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)
+JavaScript curriculum.
+
+## License
+
+[MIT (c) Calsjunior](LICENSE)
