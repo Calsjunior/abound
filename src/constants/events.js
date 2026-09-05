@@ -9,6 +9,7 @@ export const EVENTS = {
     PROJECT_FORM_CANCELED: "ui:project-form-canceled",
     PROJECT_SELECTED: "ui:project-selected",
     ADD_TODO_CLICKED: "ui:add-todo-clicked",
+    REMOVE_TODO_CLICKED: "ui:remove-todo-clicked",
     TODO_FORM_SUBMITTED: "ui:todo-form-submitted",
     TODO_FORM_CANCELED: "ui:todo-form-canceled",
     TODO_SELECTED: "ui:todo-selected",

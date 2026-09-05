@@ -2,6 +2,10 @@
   --stack-gap: var(--spacing-0);
 }
 
+.todo-form__group {
+  justify-content: space-between;
+}
+
 .todo-form__title {
   inline-size: fit-content;
   padding: var(--spacing-sm);

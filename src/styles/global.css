@@ -8,6 +8,7 @@
   --color-neutral-200: hsl(60 2 70);
   --color-neutral-300: hsl(60 2 50);
   --color-neutral-400: hsl(60 2 30);
+  --color-neutral-450: hsl(60 2 20);
   --color-neutral-500: hsl(60 2 10);
 }
 
@@ -18,6 +19,7 @@
   --bg-neutral-ghost: var(--color-neutral-50);
   --bg-neutral-accent: var(--color-neutral-100);
   --bg-neutral-medium: var(--color-neutral-300);
+  --bg-neutral-strong: var(--color-neutral-450);
 
   --fg-primary-accent: var(--color-lime-500);
   --fg-primary-accent-hover: var(--color-lime-500);

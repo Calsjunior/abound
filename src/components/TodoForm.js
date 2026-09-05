@@ -23,6 +23,7 @@ export class TodoForm {
       name: "title",
       placeholder: "e.g., Eat the spreadsheet",
       required: "true",
+      autofocus: "true",
       classes: ["form__input"],
     });
 
@@ -77,6 +78,16 @@ export class TodoForm {
       "h2",
       { classes: ["form__title", "todo-form__title"] },
       "Add Todo",
+    );
+
+    this.deleteButton = createElement(
+      "button",
+      {
+        classes: ["form__button", "form__button--delete"],
+        type: "button",
+        onClick: () => this.eventBus.publish(EVENTS.UI.REMOVE_TODO_CLICKED),
+      },
+      "Trash",
     );
 
     this.submitButton = createElement(
@@ -194,7 +205,12 @@ export class TodoForm {
           e.target.reset();
         },
       },
-      this.formTitle,
+      createElement(
+        "div",
+        { classes: ["form__group", "todo-form__group", "cluster"] },
+        this.formTitle,
+        this.deleteButton,
+      ),
       formFields,
       createElement(
         "div",
@@ -217,6 +233,7 @@ export class TodoForm {
     const isEditing = mode === "edit";
 
     this.formTitle.textContent = isEditing ? "Edit Todo" : "Add Todo";
+    this.deleteButton.style.display = isEditing ? "block" : "none";
     this.submitButton.textContent = isEditing ? "Update Todo" : "Save Todo";
   }
 

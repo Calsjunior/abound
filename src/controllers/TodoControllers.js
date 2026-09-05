@@ -51,6 +51,11 @@ export class TodoController {
       this.dialog.open();
     });
 
+    this.eventBus.subscribe(EVENTS.UI.REMOVE_TODO_CLICKED, () => {
+      this.store.removeTodoFromProject(this.editingTodoId);
+      this.dialog.close();
+    });
+
     this.eventBus.subscribe(EVENTS.UI.TODO_FORM_SUBMITTED, (todoData) => {
       if (this.editingTodoId) {
         this.store.updateTodo(this.editingTodoId, todoData);

@@ -80,3 +80,11 @@
 .form__button--submit {
   --btn-pad-inline: var(--spacing-xl);
 }
+
+.form__button--delete {
+  --bg-btn: var(--bg-neutral-strong);
+  color: var(--fg-neutral-accent);
+  border: var(--spacing-0);
+  box-shadow: 4px 4px var(--border-tertiary-accent);
+  transform: rotate(4deg);
+}
