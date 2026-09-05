@@ -37,6 +37,7 @@
 
 .form__input {
   padding: var(--spacing-md);
+  text-align: left;
   background-color: inherit;
   border: 3px solid var(--border-neutral-intense);
 

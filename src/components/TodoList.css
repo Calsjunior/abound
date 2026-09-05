@@ -82,10 +82,12 @@
 
   inline-size: var(--_size);
   block-size: var(--_size);
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   background-color: var(--bg-tertiary-accent);
   border: 2px solid var(--border-tertiary-accent);
+  border-radius: var(--spacing-0);
   box-shadow: 2px 2px var(--border-neutral-intense);
 
   &:checked {

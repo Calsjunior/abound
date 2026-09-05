@@ -26,6 +26,9 @@ body {
 
 :where(input, button, textarea, select) {
   font: inherit;
+  color: currentColor;
+  word-spacing: inherit;
+  letter-spacing: inherit;
 }
 
 :where(p, h1, h2, h3, h4, h5, h6) {
@@ -39,11 +42,15 @@ body {
 
 :where(ul, ol) {
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
 :where(button) {
+  padding: 0;
   cursor: pointer;
+  background: none;
+  border: 0;
 }
 
 :where(button:disabled) {
