@@ -15,6 +15,7 @@
 
 .todo__list {
   --stack-gap: var(--spacing-0);
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -23,10 +24,19 @@
   gap: var(--spacing-lg);
   align-items: center;
   padding-block: var(--spacing-md);
+  opacity: 1;
+  transition:
+    transform calc(var(--_todo-animation) * 1ms),
+    opacity calc(var(--_todo-animation) * 1ms);
 
   &:not(:last-child) {
     border-block-end: 1px solid var(--border-neutral-intense);
   }
+}
+
+.todo--completing {
+  opacity: 0;
+  transform: translateX(20px);
 }
 
 .todo__checkbox {
