@@ -65,6 +65,14 @@ export class ProjectList {
     );
   }
 
+  toggleSidebar() {
+    this.container.classList.toggle("project__sidebar--open");
+  }
+
+  closeSidebar() {
+    this.container.classList.remove("project__sidebar--open");
+  }
+
   get element() {
     return this.container;
   }

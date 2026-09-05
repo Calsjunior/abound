@@ -27,6 +27,7 @@ export class ProjectController {
 
     this.eventBus.subscribe(EVENTS.UI.PROJECT_SELECTED, (projectId) => {
       this.component.render(this.store.projects, projectId);
+      this.component.closeSidebar();
     });
 
     this.eventBus.subscribe(EVENTS.UI.ADD_PROJECT_CLICKED, () => {
@@ -40,6 +41,10 @@ export class ProjectController {
 
     this.eventBus.subscribe(EVENTS.UI.PROJECT_FORM_CANCELED, () => {
       this.dialog.close();
+    });
+
+    this.eventBus.subscribe(EVENTS.UI.TOGGLE_SIDEBAR, () => {
+      this.component.toggleSidebar();
     });
   }
 }
