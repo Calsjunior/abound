@@ -27,8 +27,18 @@ export class TodoList {
   renderTitle() {
     return createElement(
       "header",
-      { classes: ["todo__header"] },
-      "do the right thing.",
+      { classes: ["todo__header", "cluster"] },
+      createElement(
+        "button",
+        {
+          classes: ["todo__sidebar-toggle"],
+          onClick: () => this.eventBus.publish(EVENTS.UI.TOGGLE_SIDEBAR),
+        },
+        createElement("span", {}),
+        createElement("span", {}),
+        createElement("span", {}),
+      ),
+      createElement("span", {}, "do the right thing."),
     );
   }
 

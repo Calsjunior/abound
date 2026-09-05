@@ -13,6 +13,44 @@
   font-size: var(--todo-header-size);
 }
 
+.todo__sidebar-toggle {
+  display: none;
+
+  @media (width <= 800px) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-block: var(--spacing-sm);
+    padding-inline: var(--spacing-sm);
+    margin-inline-end: auto;
+    color: var(--fg-neutral-intense);
+    background-color: var(--bg-primary-accent);
+    border: 3px solid var(--border-neutral-intense);
+    box-shadow: 2px 2px var(--border-neutral-intense);
+    transform: rotate(3deg);
+    transition:
+      transform 100ms,
+      box-shadow 100ms;
+
+    &:active {
+      box-shadow: 0 0 var(--border-neutral-intense);
+      transform: translate(4px, 4px);
+    }
+
+    &:focus-visible {
+      outline: var(--spacing-0);
+      border-color: transparent;
+      box-shadow: 0 0 0 4px var(--border-secondary-accent-focus);
+    }
+
+    span {
+      inline-size: var(--spacing-lg);
+      block-size: 2px;
+      background-color: var(--bg-neutral-intense);
+    }
+  }
+}
+
 .todo__list {
   --stack-gap: var(--spacing-0);
   overflow-x: hidden;

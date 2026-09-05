@@ -17,8 +17,24 @@ export class ProjectList {
 
   render(projects, activeId) {
     this.container.replaceChildren(
+      this.renderHeader(),
       this.renderList(projects, activeId),
       this.renderButton(),
+    );
+  }
+
+  renderHeader() {
+    return createElement(
+      "div",
+      { classes: ["project__header"] },
+      createElement(
+        "button",
+        {
+          classes: ["project__close"],
+          onClick: () => this.eventBus.publish(EVENTS.UI.CLOSE_SIDEBAR),
+        },
+        "×",
+      ),
     );
   }
 

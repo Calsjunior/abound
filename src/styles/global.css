@@ -20,6 +20,7 @@
   --bg-neutral-accent: var(--color-neutral-100);
   --bg-neutral-medium: var(--color-neutral-300);
   --bg-neutral-strong: var(--color-neutral-450);
+  --bg-neutral-intense: var(--color-neutral-500);
 
   --fg-primary-accent: var(--color-lime-500);
   --fg-primary-accent-hover: var(--color-lime-500);
@@ -100,11 +101,18 @@ body {
 }
 
 #content {
+  position: relative;
   display: grid;
   flex: 1;
   grid-template-areas: "sidebar main";
   grid-template-columns: auto 1fr;
+  overflow-x: hidden;
   border: 1px solid var(--border-neutral-intense);
+
+  @media (width <= 800px) {
+    grid-template-areas: "main";
+    grid-template-columns: 1fr;
+  }
 }
 
 .stack {

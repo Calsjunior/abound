@@ -1,13 +1,46 @@
 .project__sidebar {
-  --sidebar-width: 260px;
+  --sidebar-width: clamp(10rem, 8.75rem + 6.25vw, 16.25rem);
 
-  --stack-gap: var(--spacing-xl);
+  --stack-gap: var(--spacing-0);
   grid-area: sidebar;
-  justify-content: space-between;
   inline-size: var(--sidebar-width);
   padding: var(--spacing-xl);
   overflow: hidden;
   background-color: var(--bg-secondary-accent);
+
+  @media (width <= 800px) {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+  }
+}
+
+.project__sidebar--open {
+  @media (width <= 800px) {
+    transform: translateX(0);
+  }
+}
+
+.project__header {
+  display: none;
+
+  @media (width <= 800px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.project__close {
+  color: var(--fg-neutral-accent);
+  background: transparent;
+  border: var(--spacing-0);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 3px var(--border-neutral-accent-focus);
+  }
 }
 
 .project__list {
@@ -19,6 +52,7 @@
   --_color: var(--fg-color, var(--fg-neutral-accent));
 
   inline-size: 100%;
+  padding: var(--spacing-0);
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: var(--font-weight-semibold);
@@ -51,6 +85,7 @@
 .project__button {
   align-self: flex-start;
   padding: var(--spacing-xs);
+  margin-block-start: auto;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;

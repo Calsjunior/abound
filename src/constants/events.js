@@ -15,5 +15,6 @@ export const EVENTS = {
     TODO_SELECTED: "ui:todo-selected",
     TODO_COMPLETE_TOGGLED: "ui:todo-complete-toggled",
     TOGGLE_SIDEBAR: "ui:toggle-sidebar",
+    CLOSE_SIDEBAR: "ui:close-sidebar",
   },
 };

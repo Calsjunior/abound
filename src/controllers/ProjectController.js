@@ -46,5 +46,9 @@ export class ProjectController {
     this.eventBus.subscribe(EVENTS.UI.TOGGLE_SIDEBAR, () => {
       this.component.toggleSidebar();
     });
+
+    this.eventBus.subscribe(EVENTS.UI.CLOSE_SIDEBAR, () => {
+      this.component.closeSidebar();
+    });
   }
 }
